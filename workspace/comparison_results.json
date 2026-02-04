@@ -1,0 +1,585 @@
+{
+  "timestamp": "2026-02-04T15:42:07.225127",
+  "models": {
+    "d4_baseline": {
+      "name": "d4_baseline",
+      "desc": "基准模型 (4层, 128维, ~5M)",
+      "checkpoint": "data/t1/base_checkpoints/d4_5gb/model_001000.pt",
+      "config": {
+        "vocab_size": 8192,
+        "n_layer": 4,
+        "n_embd": 128,
+        "n_head": 2,
+        "n_kv_head": 2,
+        "sequence_len": 512
+      },
+      "step": 1000,
+      "loss": 1.0,
+      "params": 4980872
+    },
+    "d8_depth": {
+      "name": "d8_depth",
+      "desc": "实验1-深度优先 (8层, 256维, ~20M)",
+      "checkpoint": "data/t1/base_checkpoints/d8_depth/model_005000.pt",
+      "config": {
+        "vocab_size": 8192,
+        "n_layer": 8,
+        "n_embd": 256,
+        "n_head": 4,
+        "n_kv_head": 4,
+        "sequence_len": 512
+      },
+      "step": 5000,
+      "loss": 0.66,
+      "params": 18874896
+    },
+    "d6_wide": {
+      "name": "d6_wide",
+      "desc": "实验2-宽度优先 (6层, 384维, ~35M)",
+      "checkpoint": "data/t1/base_checkpoints/d6_wide/model_005000.pt",
+      "config": {
+        "vocab_size": 8192,
+        "n_layer": 6,
+        "n_embd": 384,
+        "n_head": 6,
+        "n_kv_head": 6,
+        "sequence_len": 512
+      },
+      "step": 5000,
+      "loss": 0.59,
+      "params": 26346060
+    }
+  },
+  "results": {
+    "d4_baseline": [
+      {
+        "generated": "<|bos|>\\title \"Condmier\"\n\\track (\"Acoustic\" \"R\") {\n  color \"#FF0000\"\n  volume 13\n  balance 8\n  instrument distortionguitar\n}\n  \\staff {\n    score\n    tabs\n  }\n    \\tuning (E4 B3 G3 D3 A2 E2) {\n      hide\n      label \"Guitar Standard Tuning\"\n    }\n   ",
+        "score": 1.0,
+        "checks": {
+          "has_title": true,
+          "has_track": true,
+          "has_braces": true,
+          "has_quotes": true,
+          "valid_structure": true,
+          "no_gibberish": true,
+          "has_instrument": true,
+          "has_volume": true
+        },
+        "full": "<|bos|>\\title \"Condmier\"\n\\track (\"Acoustic\" \"R\") {\n  color \"#FF0000\"\n  volume 13\n  balance 8\n  instrument distortionguitar\n}\n  \\staff {\n    score\n    tabs\n  }\n    \\tuning (E4 B3 G3 D3 A2 E2) {\n      hide\n      label \"Guitar Standard Tuning\"\n    }\n    \\ts (4 4)\n    \\tempo 100\n    \\accidentals auto\n    \\clef"
+      },
+      {
+        "generated": "<|bos|>\\track (\"Guitar\" \"Standard Tuning\") {\n  color \"#FF0000\"\n  volume 13\n  balance 11\n  instrument acousticguitarnylon\n}\n  \\staff {\n    score\n    tabs\n  }\n    \\tuning (E4 B3 G3 D3 A2 E2) {\n      hide\n      label \"Guitar Standard Tuning\"\n    }\n    \\",
+        "score": 0.875,
+        "checks": {
+          "has_title": false,
+          "has_track": true,
+          "has_braces": true,
+          "has_quotes": true,
+          "valid_structure": true,
+          "no_gibberish": true,
+          "has_instrument": true,
+          "has_volume": true
+        },
+        "full": "<|bos|>\\track (\"Guitar\" \"Standard Tuning\") {\n  color \"#FF0000\"\n  volume 13\n  balance 11\n  instrument acousticguitarnylon\n}\n  \\staff {\n    score\n    tabs\n  }\n    \\tuning (E4 B3 G3 D3 A2 E2) {\n      hide\n      label \"Guitar Standard Tuning\"\n    }\n    \\ts (4 4)\n    \\section (\"\" \"intro 1\")\n    \\tempo 135\n    \\accidentals auto\n    \\clef g2\n"
+      },
+      {
+        "generated": "<|bos|>\\artist \"Conzmier\"\n\\title \"C.B.R\"\n\\tab \"S19114\"\n\\track (\"Lead Guitar\" \"Lead Guita\") {\n  color \"#FF0000\"\n  volume 12\n  balance 8\n  instrument acousticgrandpiano\n}\n  \\staff {\n    score\n    tabs\n  }\n    \\tuning (E4 B3 G3 D3 A2 E2) {\n      hide\n  ",
+        "score": 1.0,
+        "checks": {
+          "has_title": true,
+          "has_track": true,
+          "has_braces": true,
+          "has_quotes": true,
+          "valid_structure": true,
+          "no_gibberish": true,
+          "has_instrument": true,
+          "has_volume": true
+        },
+        "full": "<|bos|>\\artist \"Conzmier\"\n\\title \"C.B.R\"\n\\tab \"S19114\"\n\\track (\"Lead Guitar\" \"Lead Guita\") {\n  color \"#FF0000\"\n  volume 12\n  balance 8\n  instrument acousticgrandpiano\n}\n  \\staff {\n    score\n    tabs\n  }\n    \\tuning (E4 B3 G3 D3 A2 E2) {\n      hide\n      label \"Guitar Standard Tuning\"\n    }\n    \\ts (4 4"
+      },
+      {
+        "generated": "<|bos|>Song Title: 3 x2\"\n\\music \"TY.B.RC SrockS19114\"\n\\title \"BThe Cist\"\n\\words \"Bamban\"\n\\tab \"Ta Dorey\"\n\\track (\"Track 1\" \"Track 1\") {\n  color \"#FF0000\"\n  volume 13\n  balance 6\n  instrument distortionguitar\n}\n  \\staff {\n    score\n    tabs\n  }\n    \\t",
+        "score": 1.0,
+        "checks": {
+          "has_title": true,
+          "has_track": true,
+          "has_braces": true,
+          "has_quotes": true,
+          "valid_structure": true,
+          "no_gibberish": true,
+          "has_instrument": true,
+          "has_volume": true
+        },
+        "full": "<|bos|>Song Title: 3 x2\"\n\\music \"TY.B.RC SrockS19114\"\n\\title \"BThe Cist\"\n\\words \"Bamban\"\n\\tab \"Ta Dorey\"\n\\track (\"Track 1\" \"Track 1\") {\n  color \"#FF0000\"\n  volume 13\n  balance 6\n  instrument distortionguitar\n}\n  \\staff {\n    score\n    tabs\n  }\n    \\tuning (E4 B3 G3 D3 A"
+      },
+      {
+        "generated": "<|bos|>Track 1: 1 x) 2 3 3 3 3 1)\n\\bracketExtendMode groupsimilarinstruments\n\\firstSystemTrackNameOrientation horizontal\n\\otherSystemsTrackNameOrientation horizontal\n\\track (\"Steel Guitar\" \"G64\") {\n  color \"#Yey64E98\"\n  systemsLayout (3 3 3 3 3 3 3 3",
+        "score": 0.625,
+        "checks": {
+          "has_title": false,
+          "has_track": true,
+          "has_braces": false,
+          "has_quotes": true,
+          "valid_structure": true,
+          "no_gibberish": true,
+          "has_instrument": true,
+          "has_volume": false
+        },
+        "full": "<|bos|>Track 1: 1 x) 2 3 3 3 3 1)\n\\bracketExtendMode groupsimilarinstruments\n\\firstSystemTrackNameOrientation horizontal\n\\otherSystemsTrackNameOrientation horizontal\n\\track (\"Steel Guitar\" \"G64\") {\n  color \"#Yey64E98\"\n  systemsLayout (3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3"
+      },
+      {
+        "generated": "<|bos|>Guitar tab for 3 x} 4.4{g}).4\n      (7.7777777777777777777777777777777777777777777777777Con77777777777777777777777777777777sus77",
+        "score": 0.125,
+        "checks": {
+          "has_title": false,
+          "has_track": false,
+          "has_braces": true,
+          "has_quotes": false,
+          "valid_structure": false,
+          "no_gibberish": false,
+          "has_instrument": false,
+          "has_volume": false
+        },
+        "full": "<|bos|>Guitar tab for 3 x} 4.4{g}).4\n      (7.7777777777777777777777777777777777777777777777777Con77777777777777777777777777777777sus77"
+      },
+      {
+        "generated": "<|bos|>\\ts 4 4)\n\\track (\"Acoustic Guitar\" \"Acoustic G\") {\n  color \"#FF0000\"\n  volume 16\n  balance 8\n  instrument distortionguitar\n}\n  \\staff {\n    score\n    tabs\n  }\n    \\tuning (A4 E4 B3 G3 Eb2 Bb1) {\n      hide\n    }\n    \\ts (4 4)\n    \\tempo 110\n  ",
+        "score": 0.875,
+        "checks": {
+          "has_title": false,
+          "has_track": true,
+          "has_braces": true,
+          "has_quotes": true,
+          "valid_structure": true,
+          "no_gibberish": true,
+          "has_instrument": true,
+          "has_volume": true
+        },
+        "full": "<|bos|>\\ts 4 4)\n\\track (\"Acoustic Guitar\" \"Acoustic G\") {\n  color \"#FF0000\"\n  volume 16\n  balance 8\n  instrument distortionguitar\n}\n  \\staff {\n    score\n    tabs\n  }\n    \\tuning (A4 E4 B3 G3 Eb2 Bb1) {\n      hide\n    }\n    \\ts (4 4)\n    \\tempo 110\n    \\accidentals auto\n    \\clef g2\n    \\ottava regular\n   "
+      },
+      {
+        "generated": "<|bos|>\\tempo 1200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "score": 0.125,
+        "checks": {
+          "has_title": false,
+          "has_track": false,
+          "has_braces": false,
+          "has_quotes": false,
+          "valid_structure": true,
+          "no_gibberish": false,
+          "has_instrument": false,
+          "has_volume": false
+        },
+        "full": "<|bos|>\\tempo 1200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "generated": "<|bos|>| for the bass.4.4\n    |\n      3.1.1\n    |\n      2.2.1\n    |\n      2.2.1\n    |\n      2.2.1\n    |\n      2.2.1\n    |\n      2.2.1\n    |\n      2.2.1\n    |\n    \\rc 2\n      2.2.1\n    |\n      2.",
+        "score": 0.125,
+        "checks": {
+          "has_title": false,
+          "has_track": false,
+          "has_braces": false,
+          "has_quotes": false,
+          "valid_structure": true,
+          "no_gibberish": false,
+          "has_instrument": false,
+          "has_volume": false
+        },
+        "full": "<|bos|>| for the bass.4.4\n    |\n      3.1.1\n    |\n      2.2.1\n    |\n      2.2.1\n    |\n      2.2.1\n    |\n      2.2.1\n    |\n      2.2.1\n    |\n      2.2.1\n    |\n    \\rc 2\n      2.2.1\n    |\n      2."
+      },
+      {
+        "generated": "<|bos|>\\title \"My Song\"\\n\\track (\"Guitar\") {Guitar  color \"#FF0000\"\n  volume 13\n  balance 11\n  instrument acousticguitarnylon\n}\n  \\staff {\n    score\n    tabs\n  }\n    \\tuning (E4 B3 G3 D3 A2 E2) {\n      hide\n      label \"Guitar Standard Tuning\"\n    }\n",
+        "score": 1.0,
+        "checks": {
+          "has_title": true,
+          "has_track": true,
+          "has_braces": true,
+          "has_quotes": true,
+          "valid_structure": true,
+          "no_gibberish": true,
+          "has_instrument": true,
+          "has_volume": true
+        },
+        "full": "<|bos|>\\title \"My Song\"\\n\\track (\"Guitar\") {Guitar  color \"#FF0000\"\n  volume 13\n  balance 11\n  instrument acousticguitarnylon\n}\n  \\staff {\n    score\n    tabs\n  }\n    \\tuning (E4 B3 G3 D3 A2 E2) {\n      hide\n      label \"Guitar Standard Tuning\"\n    }\n    \\ts (4 4)\n    \\section (\"\" \"intro 1\")\n    \\tempo 135\n    \\accidentals auto\n    \\clef g2\n"
+      },
+      {
+        "generated": "<|bos|>\\tuning (E4 B3 G3 D3 A2 E2) {\n      firstfret 1\n      showdiagram true\n      showfingering true\n      showname true\n    }\n    \\chord (\"C\" x x x x x x) {\n      firstfret 0\n      showdiagram true\n      showfingering true\n      showname true\n    ",
+        "score": 0.5,
+        "checks": {
+          "has_title": false,
+          "has_track": false,
+          "has_braces": true,
+          "has_quotes": true,
+          "valid_structure": true,
+          "no_gibberish": true,
+          "has_instrument": false,
+          "has_volume": false
+        },
+        "full": "<|bos|>\\tuning (E4 B3 G3 D3 A2 E2) {\n      firstfret 1\n      showdiagram true\n      showfingering true\n      showname true\n    }\n    \\chord (\"C\" x x x x x x) {\n      firstfret 0\n      showdiagram true\n      showfingering true\n      showname true\n    }\n    \\chord (\"F\" x x x x x x) {\n      firstfret 0\n      showdiagram true\n      showfingering true\n      showname true\n    }\n    \\chord (\"G7\" x x x x x x)"
+      }
+    ],
+    "d8_depth": [
+      {
+        "generated": "<|bos|>\\title \"Consimada\"\n\\track (\"Piste 1\" \"Piste 1\") {\n  color \"#FF0000\"\n  volume 13\n  balance 8\n  instrument overdrivenguitar\n}\n  \\staff {\n    score\n    tabs\n  }\n    \\tuning (E4 B3 G3 D3 A2 E2) {\n      hide\n      label \"Guitar Standard Tuning\"\n   ",
+        "score": 1.0,
+        "checks": {
+          "has_title": true,
+          "has_track": true,
+          "has_braces": true,
+          "has_quotes": true,
+          "valid_structure": true,
+          "no_gibberish": true,
+          "has_instrument": true,
+          "has_volume": true
+        },
+        "full": "<|bos|>\\title \"Consimada\"\n\\track (\"Piste 1\" \"Piste 1\") {\n  color \"#FF0000\"\n  volume 13\n  balance 8\n  instrument overdrivenguitar\n}\n  \\staff {\n    score\n    tabs\n  }\n    \\tuning (E4 B3 G3 D3 A2 E2) {\n      hide\n      label \"Guitar Standard Tuning\"\n    }\n    \\ts (4 4)\n    \\section (\"\" \"Intro\")\n    \\tempo "
+      },
+      {
+        "generated": "<|bos|>\\track (\"Guitar\" \"Standard Tuning\") {\n  color \"#FF0000\"\n  volume 13\n  balance 11\n  instrument acousticguitarnylon\n}\n  \\staff {\n    score\n    tabs\n  }\n    \\tuning (E4 B3 G3 D3 A2 E2) {\n      hide\n      label \"Guitar Standard Tuning\"\n    }\n    \\",
+        "score": 0.875,
+        "checks": {
+          "has_title": false,
+          "has_track": true,
+          "has_braces": true,
+          "has_quotes": true,
+          "valid_structure": true,
+          "no_gibberish": true,
+          "has_instrument": true,
+          "has_volume": true
+        },
+        "full": "<|bos|>\\track (\"Guitar\" \"Standard Tuning\") {\n  color \"#FF0000\"\n  volume 13\n  balance 11\n  instrument acousticguitarnylon\n}\n  \\staff {\n    score\n    tabs\n  }\n    \\tuning (E4 B3 G3 D3 A2 E2) {\n      hide\n      label \"Guitar Standard Tuning\"\n    }\n    \\ts (3 4)\n    \\tempo 120\n    \\accidentals auto\n    \\clef g2\n    \\ottava regular\n    \\simile none"
+      },
+      {
+        "generated": "<|bos|>\\artist \"Jet Werton\"\n\\title \"The Met Bird\"\n\\tab \"rckat\"\n\\track (\"The Cle Hoes\" \"The CleLegato\") {\n  color \"#FF0000\"\n  volume 9\n  balance 8\n  instrument acousticguitarnylon\n}\n  \\staff {\n    score\n    tabs\n  }\n    \\tuning (E4 B3 G3 D3 A2 E2) {\n ",
+        "score": 1.0,
+        "checks": {
+          "has_title": true,
+          "has_track": true,
+          "has_braces": true,
+          "has_quotes": true,
+          "valid_structure": true,
+          "no_gibberish": true,
+          "has_instrument": true,
+          "has_volume": true
+        },
+        "full": "<|bos|>\\artist \"Jet Werton\"\n\\title \"The Met Bird\"\n\\tab \"rckat\"\n\\track (\"The Cle Hoes\" \"The CleLegato\") {\n  color \"#FF0000\"\n  volume 9\n  balance 8\n  instrument acousticguitarnylon\n}\n  \\staff {\n    score\n    tabs\n  }\n    \\tuning (E4 B3 G3 D3 A2 E2) {\n      hide\n      label \"Guitar Standard Tuning\"\n    }\n   "
+      },
+      {
+        "generated": "<|bos|>Song Title: 500\"\n\\music \"Flake DenhR\"\n\\title \"Shecher\"\n\\words \"Flake De{s\"\n\\track (\"Mido\" \"fano\") {\n  color \"#FF0000\"\n  volume 10\n  balance 8\n  instrument acousticguitarnylon\n}\n  \\staff {\n    score\n    tabs\n  }\n    \\tuning (E4 B3 G3 D3 A2 E2) ",
+        "score": 1.0,
+        "checks": {
+          "has_title": true,
+          "has_track": true,
+          "has_braces": true,
+          "has_quotes": true,
+          "valid_structure": true,
+          "no_gibberish": true,
+          "has_instrument": true,
+          "has_volume": true
+        },
+        "full": "<|bos|>Song Title: 500\"\n\\music \"Flake DenhR\"\n\\title \"Shecher\"\n\\words \"Flake De{s\"\n\\track (\"Mido\" \"fano\") {\n  color \"#FF0000\"\n  volume 10\n  balance 8\n  instrument acousticguitarnylon\n}\n  \\staff {\n    score\n    tabs\n  }\n    \\tuning (E4 B3 G3 D3 A2 E2) {\n      hide\n      label \"Guitar Standard Tuning\"\n   "
+      },
+      {
+        "generated": "<|bos|>Track 1: 1 1 4 4 2 2 3 1)\n\\bracketExtendMode groupsimilarinstruments\n\\firstSystemTrackNameOrientation horizontal\n\\otherSystemsTrackNameOrientation horizontal\n\\track (\"Steel Guitar\" \"S-Gt\") {\n  color \"#F64A26\"\n  systemsLayout (4 4 4 4 4 3 3 3 3",
+        "score": 0.75,
+        "checks": {
+          "has_title": false,
+          "has_track": true,
+          "has_braces": false,
+          "has_quotes": true,
+          "valid_structure": true,
+          "no_gibberish": true,
+          "has_instrument": true,
+          "has_volume": true
+        },
+        "full": "<|bos|>Track 1: 1 1 4 4 2 2 3 1)\n\\bracketExtendMode groupsimilarinstruments\n\\firstSystemTrackNameOrientation horizontal\n\\otherSystemsTrackNameOrientation horizontal\n\\track (\"Steel Guitar\" \"S-Gt\") {\n  color \"#F64A26\"\n  systemsLayout (4 4 4 4 4 3 3 3 3 3 2 1)\n  volume 12\n  balance 8\n  instrument acousticguitarsteel\n}\n  \\staff {\n    score\n    tabs\n  }\n    \\tuning"
+      },
+      {
+        "generated": "<|bos|>Guitar tab for 3. Wertis\"\n\\title \"PRC Srock\"\n\\defaultSystemsLayout 4\n\\systemsLayout 4\n\\bracketExtendMode groupsimilarinstruments\n\\firstSystemTrackNameOrientation horizontal\n\\otherSystemsTrackNameOrientation horizontal\n\\track (\"Electric Guitar ",
+        "score": 0.75,
+        "checks": {
+          "has_title": true,
+          "has_track": true,
+          "has_braces": false,
+          "has_quotes": true,
+          "valid_structure": true,
+          "no_gibberish": true,
+          "has_instrument": true,
+          "has_volume": false
+        },
+        "full": "<|bos|>Guitar tab for 3. Wertis\"\n\\title \"PRC Srock\"\n\\defaultSystemsLayout 4\n\\systemsLayout 4\n\\bracketExtendMode groupsimilarinstruments\n\\firstSystemTrackNameOrientation horizontal\n\\otherSystemsTrackNameOrientation horizontal\n\\track (\"Electric Guitar 1\" \"E-Gt\") {\n  color \"#CE4330\"\n  systemsLayout (3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 "
+      },
+      {
+        "generated": "<|bos|>\\ts 4 4)\n\\wordsandmusic (\"Words & Music by %WORDSMUSIC%\" right)\n\\music \"Shecherers & L REATAT{tt\"\n\\title \"Sandrash\"\n\\words \"Shecherers & L REATmy\"\n\\track (\"Track 1\" \"Track 1\") {\n  color \"#FF0000\"\n  volume 13\n  balance 8\n  instrument acousticgu",
+        "score": 1.0,
+        "checks": {
+          "has_title": true,
+          "has_track": true,
+          "has_braces": true,
+          "has_quotes": true,
+          "valid_structure": true,
+          "no_gibberish": true,
+          "has_instrument": true,
+          "has_volume": true
+        },
+        "full": "<|bos|>\\ts 4 4)\n\\wordsandmusic (\"Words & Music by %WORDSMUSIC%\" right)\n\\music \"Shecherers & L REATAT{tt\"\n\\title \"Sandrash\"\n\\words \"Shecherers & L REATmy\"\n\\track (\"Track 1\" \"Track 1\") {\n  color \"#FF0000\"\n  volume 13\n  balance 8\n  instrument acousticguitarsteel\n}\n  \\staff {\n    score\n    tabs\n  }\n    \\tuning (E4"
+      },
+      {
+        "generated": "<|bos|>\\tempo 120\n\\wordsandmusic (\"Words & Music by %WORDSMUSIC%\" right)\n\\title \"Shecher\"\n\\track (\"������� 1\" \"������� 1\") {\n  color \"#FF0000\"\n  volume 12\n  balance 8\n  instrument acousticgrandpiano\n}\n  \\staff {\n    score\n    tabs\n  }\n    \\tuning (E4",
+        "score": 1.0,
+        "checks": {
+          "has_title": true,
+          "has_track": true,
+          "has_braces": true,
+          "has_quotes": true,
+          "valid_structure": true,
+          "no_gibberish": true,
+          "has_instrument": true,
+          "has_volume": true
+        },
+        "full": "<|bos|>\\tempo 120\n\\wordsandmusic (\"Words & Music by %WORDSMUSIC%\" right)\n\\title \"Shecher\"\n\\track (\"������� 1\" \"������� 1\") {\n  color \"#FF0000\"\n  volume 12\n  balance 8\n  instrument acousticgrandpiano\n}\n  \\staff {\n    score\n    tabs\n  }\n    \\tuning (E4 B3 G3 D3 A2 E2) {\n      hide\n      label \"Guitar Standard Tuning\"\n    }\n    \\ts (4 4"
+      },
+      {
+        "generated": "<|bos|>| ���� 2:4 5-15-RF SFSF\"\n\\defaultSystemsLayout 4\n\\systemsLayout 4\n\\bracketExtendMode groupsimilarinstruments\n\\firstSystemTrackNameOrientation horizontal\n\\otherSystemsTrackNameOrientation horizontal\n\\track (\"Steel Guitar\" \"S-Gt\") {\n  color \"#F6",
+        "score": 0.625,
+        "checks": {
+          "has_title": false,
+          "has_track": true,
+          "has_braces": false,
+          "has_quotes": true,
+          "valid_structure": true,
+          "no_gibberish": true,
+          "has_instrument": true,
+          "has_volume": false
+        },
+        "full": "<|bos|>| ���� 2:4 5-15-RF SFSF\"\n\\defaultSystemsLayout 4\n\\systemsLayout 4\n\\bracketExtendMode groupsimilarinstruments\n\\firstSystemTrackNameOrientation horizontal\n\\otherSystemsTrackNameOrientation horizontal\n\\track (\"Steel Guitar\" \"S-Gt\") {\n  color \"#F64A26\"\n  systemsLayout (3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3"
+      },
+      {
+        "generated": "<|bos|>\\title \"My Song\"\\n\\track (\"Guitar\") {Jetin\" \"Guitarmed \") {\n  color \"#000000\"\n  volume 16\n  balance 8\n  instrument overdrivenguitar\n}\n  \\staff {\n    score\n    tabs\n  }\n    \\tuning (E4 B3 G3 D3 A2 E2) {\n      hide\n      label \"Guitar Standard T",
+        "score": 1.0,
+        "checks": {
+          "has_title": true,
+          "has_track": true,
+          "has_braces": true,
+          "has_quotes": true,
+          "valid_structure": true,
+          "no_gibberish": true,
+          "has_instrument": true,
+          "has_volume": true
+        },
+        "full": "<|bos|>\\title \"My Song\"\\n\\track (\"Guitar\") {Jetin\" \"Guitarmed \") {\n  color \"#000000\"\n  volume 16\n  balance 8\n  instrument overdrivenguitar\n}\n  \\staff {\n    score\n    tabs\n  }\n    \\tuning (E4 B3 G3 D3 A2 E2) {\n      hide\n      label \"Guitar Standard Tuning\"\n    }\n    \\ts (4 4)\n    \\tempo 98\n    \\accidentals auto\n    \\clef g2\n    \\"
+      },
+      {
+        "generated": "<|bos|>\\tuning (E4 B3 G3 D3 A2 E2) A1) A1) A1) AR D3) A19114 3) RE CC (E3) A1) A1) A1) A1) A1) A1) A1) A1) A1) A1) A1) A1) A1) A1) A1) A1)}\n) A1) A1) A1) A1) A1) A1) A1) A",
+        "score": 0.125,
+        "checks": {
+          "has_title": false,
+          "has_track": false,
+          "has_braces": false,
+          "has_quotes": false,
+          "valid_structure": false,
+          "no_gibberish": true,
+          "has_instrument": false,
+          "has_volume": false
+        },
+        "full": "<|bos|>\\tuning (E4 B3 G3 D3 A2 E2) A1) A1) A1) AR D3) A19114 3) RE CC (E3) A1) A1) A1) A1) A1) A1) A1) A1) A1) A1) A1) A1) A1) A1) A1) A1)}\n) A1) A1) A1) A1) A1) A1) A1) A"
+      }
+    ],
+    "d6_wide": [
+      {
+        "generated": "<|bos|>\\title \"Consimier\"\n\\track (\"\\npart\" \"R\") {\n  color \"#FF0000\"\n  volume 13\n  balance 8\n  instrument distortionguitar\n}\n  \\staff {\n    score\n    tabs\n  }\n    \\tuning (E4 B3 G3 D3 A2 E2) {\n      hide\n      label \"Guitar Standard Tuning\"\n    }\n    ",
+        "score": 1.0,
+        "checks": {
+          "has_title": true,
+          "has_track": true,
+          "has_braces": true,
+          "has_quotes": true,
+          "valid_structure": true,
+          "no_gibberish": true,
+          "has_instrument": true,
+          "has_volume": true
+        },
+        "full": "<|bos|>\\title \"Consimier\"\n\\track (\"\\npart\" \"R\") {\n  color \"#FF0000\"\n  volume 13\n  balance 8\n  instrument distortionguitar\n}\n  \\staff {\n    score\n    tabs\n  }\n    \\tuning (E4 B3 G3 D3 A2 E2) {\n      hide\n      label \"Guitar Standard Tuning\"\n    }\n    \\ts (4 4)\n    \\tempo 100\n    \\accidentals auto\n    \\clef"
+      },
+      {
+        "generated": "<|bos|>\\track (\"Guitar\" \"Standard Tuning\") {\n  color \"#FF0000\"\n  volume 13\n  balance 11\n  instrument acousticguitarnylon\n}\n  \\staff {\n    score\n    tabs\n  }\n    \\tuning (E4 B3 G3 D3 A2 E2) {\n      hide\n      label \"Guitar Standard Tuning\"\n    }\n    \\",
+        "score": 0.875,
+        "checks": {
+          "has_title": false,
+          "has_track": true,
+          "has_braces": true,
+          "has_quotes": true,
+          "valid_structure": true,
+          "no_gibberish": true,
+          "has_instrument": true,
+          "has_volume": true
+        },
+        "full": "<|bos|>\\track (\"Guitar\" \"Standard Tuning\") {\n  color \"#FF0000\"\n  volume 13\n  balance 11\n  instrument acousticguitarnylon\n}\n  \\staff {\n    score\n    tabs\n  }\n    \\tuning (E4 B3 G3 D3 A2 E2) {\n      hide\n      label \"Guitar Standard Tuning\"\n    }\n    \\ts (3 4)\n    \\tempo 120\n    \\accidentals auto\n    \\clef g2\n    \\ottava regular\n    \\simile none"
+      },
+      {
+        "generated": "<|bos|>\\artist \"Jet Wertis\"\n\\title \"PRF Srock\"\n\\defaultSystemsLayout 4\n\\systemsLayout 4\n\\bracketExtendMode groupsimilarinstruments\n\\firstSystemTrackNameOrientation horizontal\n\\otherSystemsTrackNameOrientation horizontal\n\\track (\"Electric Guitar 1\" \"E",
+        "score": 0.75,
+        "checks": {
+          "has_title": true,
+          "has_track": true,
+          "has_braces": false,
+          "has_quotes": true,
+          "valid_structure": true,
+          "no_gibberish": true,
+          "has_instrument": true,
+          "has_volume": false
+        },
+        "full": "<|bos|>\\artist \"Jet Wertis\"\n\\title \"PRF Srock\"\n\\defaultSystemsLayout 4\n\\systemsLayout 4\n\\bracketExtendMode groupsimilarinstruments\n\\firstSystemTrackNameOrientation horizontal\n\\otherSystemsTrackNameOrientation horizontal\n\\track (\"Electric Guitar 1\" \"E-Gt\") {\n  color \"#CE4330\"\n  systemsLayout (3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 "
+      },
+      {
+        "generated": "<|bos|>Song Title: 1992 Warnie Vrabob, MRC Srock\"\n\\artist \"Battler REATC\"\n\\copyright \"Battler RE DeT 2096\"\n\\instructions \"Rhythmorked for a band\"\n\\music \"Battler REER\"\n\\notices \"http://wwwContatler6s.com/guitars/guitarc\\r\\nguitarpro1.narod.ru\"\n\\subti",
+        "score": 0.5,
+        "checks": {
+          "has_title": true,
+          "has_track": false,
+          "has_braces": false,
+          "has_quotes": true,
+          "valid_structure": true,
+          "no_gibberish": true,
+          "has_instrument": false,
+          "has_volume": false
+        },
+        "full": "<|bos|>Song Title: 1992 Warnie Vrabob, MRC Srock\"\n\\artist \"Battler REATC\"\n\\copyright \"Battler RE DeT 2096\"\n\\instructions \"Rhythmorked for a band\"\n\\music \"Battler REER\"\n\\notices \"http://wwwContatler6s.com/guitars/guitarc\\r\\nguitarpro1.narod.ru\"\n\\subtitle \"Thess of the Speth\"\n\\title \"The S"
+      },
+      {
+        "generated": "<|bos|>Track 1: 2001 Wertirraphones\"\n\\artist \"The}).1911\"\n\\copyright \"1996 Birist{tt Music\"\n\\music \"bandem Debath\"\n\\notices \"C 'nance' feel free to correct the tab.\"\n\\title \"The Undcies\"\n\\words \"bandem Debath\"\n\\tab \"guitars distortionguitar}\nc\\r\\n 19",
+        "score": 0.75,
+        "checks": {
+          "has_title": true,
+          "has_track": true,
+          "has_braces": true,
+          "has_quotes": true,
+          "valid_structure": true,
+          "no_gibberish": true,
+          "has_instrument": false,
+          "has_volume": false
+        },
+        "full": "<|bos|>Track 1: 2001 Wertirraphones\"\n\\artist \"The}).1911\"\n\\copyright \"1996 Birist{tt Music\"\n\\music \"bandem Debath\"\n\\notices \"C 'nance' feel free to correct the tab.\"\n\\title \"The Undcies\"\n\\words \"bandem Debath\"\n\\tab \"guitars distortionguitar}\nc\\r\\n 1993\"\n\\track (\"Guitar\" \"Guitar\") {\n  color \"#0000FF\"\n  volume"
+      },
+      {
+        "generated": "<|bos|>Guitar tab for 3.2.4\n    |\n      2.3.4\n      2.3.4\n      2.3.4\n    |\n      5.1.4\n      5.1.4\n      5.1.4\n    |\n      5.1.2\n      5.1.4\n    |\n      5.1.4\n      5.1.4\n      5.1.",
+        "score": 0.125,
+        "checks": {
+          "has_title": false,
+          "has_track": false,
+          "has_braces": false,
+          "has_quotes": false,
+          "valid_structure": true,
+          "no_gibberish": false,
+          "has_instrument": false,
+          "has_volume": false
+        },
+        "full": "<|bos|>Guitar tab for 3.2.4\n    |\n      2.3.4\n      2.3.4\n      2.3.4\n    |\n      5.1.4\n      5.1.4\n      5.1.4\n    |\n      5.1.2\n      5.1.4\n    |\n      5.1.4\n      5.1.4\n      5.1."
+      },
+      {
+        "generated": "<|bos|>\\ts 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 1)\n\\bracketExtendMode groupsimilarinstruments\n\\firstSystemTrackNameOrientation horizontal\n\\otherSystemsTrackNameOrientation horizontal\n\\track (\"Guitar\" \"S-Gt\") {\n  color \"#F64A26\"\n  systemsLa",
+        "score": 0.625,
+        "checks": {
+          "has_title": false,
+          "has_track": true,
+          "has_braces": false,
+          "has_quotes": true,
+          "valid_structure": true,
+          "no_gibberish": true,
+          "has_instrument": true,
+          "has_volume": false
+        },
+        "full": "<|bos|>\\ts 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 1)\n\\bracketExtendMode groupsimilarinstruments\n\\firstSystemTrackNameOrientation horizontal\n\\otherSystemsTrackNameOrientation horizontal\n\\track (\"Guitar\" \"S-Gt\") {\n  color \"#F64A26\"\n  systemsLayout (3 3 3 3 3 3 3 3 3 3 3 3 "
+      },
+      {
+        "generated": "<|bos|>\\tempo 120\"\n\\wordsandmusic (\"Words & Music by %WORDSMUSIC%\" right)\n\\music \"Sheck out the listen\"\n\\track (\"C{s\" \"CMidbi\") {\n  color \"#000000\"\n  volume 16\n  balance 8\n  instrument percussion\n}\n  \\staff {\n    score\n  }\n    \\articulation defaults\n",
+        "score": 0.875,
+        "checks": {
+          "has_title": false,
+          "has_track": true,
+          "has_braces": true,
+          "has_quotes": true,
+          "valid_structure": true,
+          "no_gibberish": true,
+          "has_instrument": true,
+          "has_volume": true
+        },
+        "full": "<|bos|>\\tempo 120\"\n\\wordsandmusic (\"Words & Music by %WORDSMUSIC%\" right)\n\\music \"Sheck out the listen\"\n\\track (\"C{s\" \"CMidbi\") {\n  color \"#000000\"\n  volume 16\n  balance 8\n  instrument percussion\n}\n  \\staff {\n    score\n  }\n    \\articulation defaults\n    \\ts (4 4)\n    \\tempo (135 \"Moderate\")\n    \\accidentals auto\n    \\clef neutral\n    \\ottava"
+      },
+      {
+        "generated": "<|bos|>| ���� � �����\"\n\\music \"Flake, MRC Srock\"\n\\title \"Battle Of RThe Come\"\n\\words \"Flake, MRC Sarmonic\"\n\\track (\"Acoustic Guitar\" \"Acoustic G\") {\n  color \"#FF0000\"\n  volume 13\n  balance 8\n  instrument acousticguitarnylon\n}\n  \\staff {\n    score\n   ",
+        "score": 1.0,
+        "checks": {
+          "has_title": true,
+          "has_track": true,
+          "has_braces": true,
+          "has_quotes": true,
+          "valid_structure": true,
+          "no_gibberish": true,
+          "has_instrument": true,
+          "has_volume": true
+        },
+        "full": "<|bos|>| ���� � �����\"\n\\music \"Flake, MRC Srock\"\n\\title \"Battle Of RThe Come\"\n\\words \"Flake, MRC Sarmonic\"\n\\track (\"Acoustic Guitar\" \"Acoustic G\") {\n  color \"#FF0000\"\n  volume 13\n  balance 8\n  instrument acousticguitarnylon\n}\n  \\staff {\n    score\n    tabs\n  }\n    \\tuning (E4 B3 G3 D3 A2 E2) {\n"
+      },
+      {
+        "generated": "<|bos|>\\title \"My Song\"\\n\\track (\"Guitar\") {Guitar)\" \"GuitarGu\") {\n  color \"#FF0000\"\n  volume 16\n  balance 8\n  instrument acousticguitarnylon\n}\n  \\staff {\n    score\n    tabs\n  }\n    \\tuning (E4 B3 G3 D3 A2 E2) {\n      hide\n      label \"Guitar Standar",
+        "score": 1.0,
+        "checks": {
+          "has_title": true,
+          "has_track": true,
+          "has_braces": true,
+          "has_quotes": true,
+          "valid_structure": true,
+          "no_gibberish": true,
+          "has_instrument": true,
+          "has_volume": true
+        },
+        "full": "<|bos|>\\title \"My Song\"\\n\\track (\"Guitar\") {Guitar)\" \"GuitarGu\") {\n  color \"#FF0000\"\n  volume 16\n  balance 8\n  instrument acousticguitarnylon\n}\n  \\staff {\n    score\n    tabs\n  }\n    \\tuning (E4 B3 G3 D3 A2 E2) {\n      hide\n      label \"Guitar Standard Tuning\"\n    }\n    \\ts (4 4)\n    \\tempo 60\n    \\accidentals auto\n    \\clef g2\n    \\ottava"
+      },
+      {
+        "generated": "<|bos|>\\tuning (E4 B3 G3 D3 A2 E2) A1) A1 G1) A1\"\n\\title \"The}).1911 A1\"\n\\tab \"The Clearly\"\n\\track (\"Guitar 1\" \"Guitar 1\") {\n  color \"#FF0000\"\n  volume 13\n  balance 3\n  instrument overdrivenguitar\n}\n  \\staff {\n    score\n    tabs\n  }\n    \\tuning (E4 B",
+        "score": 1.0,
+        "checks": {
+          "has_title": true,
+          "has_track": true,
+          "has_braces": true,
+          "has_quotes": true,
+          "valid_structure": true,
+          "no_gibberish": true,
+          "has_instrument": true,
+          "has_volume": true
+        },
+        "full": "<|bos|>\\tuning (E4 B3 G3 D3 A2 E2) A1) A1 G1) A1\"\n\\title \"The}).1911 A1\"\n\\tab \"The Clearly\"\n\\track (\"Guitar 1\" \"Guitar 1\") {\n  color \"#FF0000\"\n  volume 13\n  balance 3\n  instrument overdrivenguitar\n}\n  \\staff {\n    score\n    tabs\n  }\n    \\tuning (E4 B3 G3 D3 A2 E2) {\n      hide\n      label \"Guitar Standard"
+      }
+    ]
+  },
+  "summary": [
+    {
+      "name": "d8_depth",
+      "desc": "实验1-深度优先 (8层, 256维, ~20M)",
+      "params": 18.874896,
+      "step": 5000,
+      "train_loss": 0.66,
+      "avg_score": 0.8295454545454546,
+      "check_ratio": 0.8295454545454546
+    },
+    {
+      "name": "d6_wide",
+      "desc": "实验2-宽度优先 (6层, 384维, ~35M)",
+      "params": 26.34606,
+      "step": 5000,
+      "train_loss": 0.59,
+      "avg_score": 0.7727272727272727,
+      "check_ratio": 0.7727272727272727
+    },
+    {
+      "name": "d4_baseline",
+      "desc": "基准模型 (4层, 128维, ~5M)",
+      "params": 4.980872,
+      "step": 1000,
+      "train_loss": 1.0,
+      "avg_score": 0.6590909090909091,
+      "check_ratio": 0.6590909090909091
+    }
+  ]
+}
