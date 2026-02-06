@@ -63,8 +63,8 @@ python -m scripts.base_train \
     --warmup-ratio=0.0 \
     --warmdown-ratio=0.25 \
     --final-lr-frac=0.05 \
-    --run="exp1_d8_depth_v2" \
-    --model-tag="d8_depth_v2"
+    --model-tag="d8_depth" \
+    --run="exp1_d8_depth_v2"
 
 echo ""
 echo "✓ 续训完成: d8_depth_v2 模型已保存"
